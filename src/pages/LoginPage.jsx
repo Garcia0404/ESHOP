@@ -1,6 +1,7 @@
 import React,{useContext, useEffect, useState} from 'react'
 import { UsuarioContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
+import googlePng from '../assets/google.png' 
 export const LoginPage = () => {
   const { username,setUsername,password,setPassword } = useContext(UsuarioContext)
   const [ nombre,setNombre ] = useState('')
@@ -59,7 +60,7 @@ export const LoginPage = () => {
             </div>
             <button type='button' className='flex border p-3 rounded-md'>
               <span>
-                <img src='src/assets/google.png' width='30px' height='30px' alt="google.png" />
+                <img src={googlePng} width='30px' height='30px' alt="google.png" />
               </span>
               <span className='w-full'>Sign in with Google</span>
             </button>
