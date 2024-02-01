@@ -1,6 +1,6 @@
 import React,{useContext, useEffect} from 'react'
 import  {CardCart}  from './CardCart';
-import { UsuarioContext } from '../../context/AppContext.jsx';
+import { UsuarioContext } from '../../context/AppContext';
 
 export const ShoppingCart = () => {
   const{openShop,openShoppingCart,items}=useContext(UsuarioContext)

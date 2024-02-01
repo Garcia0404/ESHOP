@@ -10,7 +10,7 @@ export const Nav = () => {
     <>
       <nav className='flex items-center justify-between p-3 sticky top-0 right-0 bg-[rgba(255,255,255,0.3)] backdrop-blur-sm z-10 border-b border-gray-200'>
         <div className='text-xl text-blue-500 font-bold'>Virtual Shop</div>
-        <Link className='z-10 hover:scale-105 transition-all' to='/Login'>Iniciar Sesión</Link>
+        <div className='z-10 hover:scale-105 transition-all' to='/Login'>Categorías</div>
         
         <div className='relative'>
           <div className='top-0 text-sm text-white right-0 rounded-full bg-black absolute z-20 w-4 h-4 grid place-content-center'>{items.length}</div>

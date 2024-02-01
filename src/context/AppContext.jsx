@@ -1,14 +1,17 @@
-import { createContext,useState } from "react";
+import { createContext,useState,useEffect } from "react";
 export const UsuarioContext = createContext()
 export const AppContext = ({children}) => {
-  const [openShop,setOpenShop] = useState(false)
-  const [items,setItems] = useState([])
-  const {subtotal,setSubtotal} = useState(0)
+  const [ openShop,setOpenShop ] = useState(false)
+  const [ items,setItems ] = useState([])
+  const { subtotal,setSubtotal } = useState(0)
+  const [ username,setUsername ] = useState('')
+  const [ password,setPassword ] = useState('')
 
   function openShoppingCart(){
     setOpenShop(!openShop)
     document.body.style.overflowY = openShop ? 'auto':'hidden';
   }
+
   function addCart(product) {
     const condicion = items.find((item)=>item.id===product.id)
     if(condicion){
@@ -20,6 +23,7 @@ export const AppContext = ({children}) => {
       setItems([...items,newItem])
     }
   }
+
   function restCart(product){
     const condicion = items.find((item)=>item.id===product.id)
     if(condicion.cantidad>1){
@@ -29,9 +33,13 @@ export const AppContext = ({children}) => {
     }
   }
 
+  useEffect(()=>{
+    localStorage.setItem('Username',username)
+  },[username])
+
 
   return (
-    <UsuarioContext.Provider value={{openShop,setOpenShop,openShoppingCart,addCart,restCart,items,setItems,subtotal,setSubtotal}}>
+    <UsuarioContext.Provider value={{openShop,setOpenShop,openShoppingCart,addCart,restCart,items,setItems,subtotal,setSubtotal,username,setUsername,password,setPassword}}>
       {children}
     </UsuarioContext.Provider>
   )

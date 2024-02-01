@@ -13,7 +13,7 @@ export const CardProducts = (product) => {
         </div>
         <div className="p-6">
           <div className="mb-2 flex items-center justify-between">
-            <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
+            <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
               {product.nombre}
             </p>
             <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
