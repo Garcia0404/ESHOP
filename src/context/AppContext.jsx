@@ -34,8 +34,13 @@ export const AppContext = ({children}) => {
   }
 
   useEffect(()=>{
-    localStorage.setItem('Username',username)
-  },[username])
+    let data = JSON.parse(localStorage.getItem('data'))
+    if(data){
+      setUsername(data.Username)
+      setPassword(data.Password)
+      console.log(data)
+    }
+  },[])
 
 
   return (
