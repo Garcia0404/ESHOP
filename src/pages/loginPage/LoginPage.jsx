@@ -1,10 +1,11 @@
 import React,{useContext, useEffect, useState} from 'react'
-import { UsuarioContext } from '../context/AppContext'
+import { UsuarioContext } from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom'
-import googlePng from '../assets/google.png' 
+import googlePng from '../../assets/google.png' 
 export const LoginPage = () => {
   const { username,setUsername,password,setPassword } = useContext(UsuarioContext)
   const navigate = useNavigate()
+  const [error,setError]  = useState(false)
 
   function handleChange(e){
     setUsername(e.target.value)
@@ -15,13 +16,15 @@ export const LoginPage = () => {
     if(username&&password) {
       let datos = JSON.stringify({Username:username,Password:password})
       localStorage.setItem('data',datos)
-      navigate('/inicio')}else return alert('Llene todos los campos')
+      navigate('/products')
+    }else return setError(true)
   }
 
   function handleChangePassword(e){
     setPassword(e.target.value)
   }
 
+  let errorForm =error?'block':'hidden'
   
   return (
     <>
@@ -31,7 +34,7 @@ export const LoginPage = () => {
           <h1 className='font-bold  text-balance text-3xl tablet:text-4xl mb-6 leading-relaxed bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text'>Enter your account and discover new experiences</h1>
           <p className='font-light'>You do not have an account?</p>
           <div>
-          <button className='bg-gray-600 p-3 rounded-md mt-6 mb-3'>Create account here</button>
+          <button className='bg-gray-600 p-3 rounded-md mt-6 mb-3 cursor-default'>Create account here</button>
           </div>
         </section>
         
@@ -42,6 +45,7 @@ export const LoginPage = () => {
           <form onSubmit={submitForm} className='flex flex-col gap-4 w-full'>
             <input onChange={handleChange} type="text" className='border rounded-md p-3' placeholder='Username'/>
             <input onChange={handleChangePassword} type="password" className='border rounded-md p-3' placeholder='Password'/>
+            <div className={`border-t border-red-400 bg-red-300 rounded-md p-2 ${errorForm}`}>Complete todos los campos</div>
             <button type='submit' className='bg-black text-white p-3 rounded-md'>Login</button>
             <div className='flex justify-center items-center'>
               <span className='border w-full border-black'></span>
@@ -52,7 +56,7 @@ export const LoginPage = () => {
               <span>
                 <img src={googlePng} width='30px' height='30px' alt="google.png" />
               </span>
-              <span className='w-full'>Sign in with Google</span>
+              <span className='w-full cursor-default'>Sign in with Google</span>
             </button>
           </form>
         </section>
