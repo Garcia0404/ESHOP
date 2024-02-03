@@ -4,8 +4,8 @@ import { UsuarioContext } from '../../context/AppContext';
 
 export const ShoppingCart = () => {
   const{openShop,openShoppingCart,items}=useContext(UsuarioContext)
-  const close = openShop?'overflow-auto absolute top-0 right-0 h-dvh w-full min-[350px]:w-80 bg-white text-black z-30 shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] translate-x-0 visible transition-all ease-in-out duration-300':'absolute top-0 right-0 h-dvh w-3/4 sm:w-2/5 rounded-s-3xl bg-white text-black z-[10] shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] translate-x-[100%] invisible transition-all ease-in-out duration-300'
-  const total = items.reduce((accumulator,valor) => accumulator+valor.precio*valor.cantidad , 0)
+  const close = openShop?'overflow-auto absolute top-0 right-0 h-dvh w-full min-[350px]:w-80 bg-white text-black z-30 shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] translate-x-0 visible transition-all ease-in-out duration-300 flex flex-col justify-between':'absolute top-0 right-0 h-dvh w-3/4 sm:w-2/5 rounded-s-3xl bg-white text-black z-[10] shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] translate-x-[100%] invisible transition-all ease-in-out duration-300 flex flex-col justify-between'
+  const total = items.reduce((accumulator,valor) => accumulator+valor.price*valor.cantidad , 0)
   
   return (
     <>
@@ -15,7 +15,7 @@ export const ShoppingCart = () => {
             {
               items.map((item,index)=>(
                 <article key={index}>
-                  <CardCart id={item.id} nombre={item.nombre}  image={item.image} precio={item.precio} cantidad={item.cantidad}/>
+                  <CardCart {...item}/>
                 </article>
               ))
             }

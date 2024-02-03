@@ -2,14 +2,15 @@ import React, { useContext } from 'react'
 import { UsuarioContext } from '../../context/AppContext'
 import { ShoppingCart } from './ShoppingCart'
 import  catPng  from '../../assets/cat.png'
+import { useNavigate } from 'react-router-dom'
 export const Nav = () => {
   const { openShoppingCart, items } = useContext(UsuarioContext)
-
+  const navigate = useNavigate()
 
   return (
     <>
-      <nav className='flex items-center justify-between p-3 sticky top-0 right-0 bg-[rgba(255,255,255,0.3)] backdrop-blur-md z-10 border-b border-gray-200'>
-        <div className='text-xl text-colorMain font-bold'>Virtual Shop</div>
+      <nav className='flex items-center justify-between p-3 sticky top-0 right-0 bg-[rgba(255,255,255,0.3)] backdrop-blur-md z-10'>
+        <div onClick={()=>navigate('/products')} className='text-xl text-colorMain font-bold cursor-pointer'>Virtual Shop</div>
         <div className='flex gap-2 items-center'>
           <div className='relative'>
             <div className='top-0 text-sm text-white right-0 rounded-full bg-black absolute z-20 w-4 h-4 grid place-content-center'>{items.length}</div>

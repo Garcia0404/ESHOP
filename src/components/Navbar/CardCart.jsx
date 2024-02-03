@@ -1,34 +1,32 @@
-import React,{useEffect,useContext, useState} from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { UsuarioContext } from '../../context/AppContext'
 
-export const CardCart = (itemCart) => { 
-  const {items,setItems,addCart,restCart} = useContext(UsuarioContext)
-  const calcular = itemCart.precio*itemCart.cantidad
+export const CardCart = (itemCart) => {
+  const { items, setItems, addCart, restCart } = useContext(UsuarioContext)
+  const calcular = itemCart.price * itemCart.cantidad
 
-  useEffect(()=>{
-    console.log('mi variable cambió',calcular),[calcular]
+  useEffect(() => {
+    console.log('Agregado al carrito :)', calcular), [calcular]
   })
-  
-  const enviarDatosAlPadre = () => {
-    onEnviarDatos(datoLocal);
-  };
 
-  function removerCart(){
-    setItems(items.filter((item)=>item.id!==itemCart.id))
+  function removerCart() {
+    setItems(items.filter((item) => item.id !== itemCart.id))
   }
 
-  
+
   return (
     <li className='bg-gray-100 w-full p-2 grid grid-cols-2 grid-rows-auto gap-2'>
-      <img className='m-auto' src={itemCart.image} height='100' width='100' alt={itemCart.id}/>
-      <section>
-        <h3 className='text-sm font-light'>{itemCart.nombre}</h3>
-        <span><span className='font-light text-gray-400'>Precio x unidad: </span> <br></br>S/ {itemCart.precio}</span>
+      <div className='grid place-content-center rounded-md bg-white border'>
+        <img className='m-auto' src={itemCart.image} height='100' width='100' alt={itemCart.id} />
+      </div>
+      <section className='flex flex-col justify-around'>
+        <h3 className='text-sm font-light'>{itemCart.title}</h3>
+        <span><span className='font-light text-gray-400'>Precio x unidad: </span> <br></br>S/ {itemCart.price}</span>
       </section>
       <div className='w-full flex justify-center'>
-        <button onClick={()=>restCart(itemCart)} type='button' className='bg-colorMain text-white rounded-s-3xl w-6'>-</button>
+        <button onClick={() => restCart(itemCart)} type='button' className='bg-colorMain text-white rounded-s-3xl w-6'>-</button>
         <span className='m-auto'>{itemCart.cantidad}</span>
-        <button onClick={()=>addCart(itemCart)} type='button' className='bg-colorMain text-white rounded-e-3xl w-6'>+</button>
+        <button onClick={() => addCart(itemCart)} type='button' className='bg-colorMain text-white rounded-e-3xl w-6'>+</button>
       </div>
       <div onClick={removerCart} className='cursor-pointer bg-main rounded-full w-8 h-8 grid place-content-center justify-self-end'>
         <svg className='fill-white stroke-main w-6 h-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
