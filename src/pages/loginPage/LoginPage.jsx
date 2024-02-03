@@ -1,4 +1,4 @@
-import React,{useContext, useEffect, useState} from 'react'
+import React,{useContext, useState} from 'react'
 import { UsuarioContext } from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 import googlePng from '../../assets/google.png' 
@@ -6,6 +6,7 @@ export const LoginPage = () => {
   const { username,setUsername,password,setPassword } = useContext(UsuarioContext)
   const navigate = useNavigate()
   const [error,setError]  = useState(false)
+
 
   function handleChange(e){
     setUsername(e.target.value)

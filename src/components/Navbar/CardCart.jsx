@@ -21,7 +21,7 @@ export const CardCart = (itemCart) => {
       </div>
       <section className='flex flex-col justify-around'>
         <h3 className='text-sm font-light'>{itemCart.title}</h3>
-        <span><span className='font-light text-gray-400'>Precio x unidad: </span> <br></br>S/ {itemCart.price}</span>
+        <span><span className='font-light text-gray-400'>Price x unit: </span> <br></br>S/ {itemCart.price}</span>
       </section>
       <div className='w-full flex justify-center'>
         <button onClick={() => restCart(itemCart)} type='button' className='bg-colorMain text-white rounded-s-3xl w-6'>-</button>

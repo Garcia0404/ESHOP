@@ -23,8 +23,8 @@ export const ShoppingCart = () => {
         </div>
         <footer className='sticky bottom-0 right-0 bg-white border border-gray-200 grid grid-rows-2 grid-cols-2 gap-2 px-2 pb-2'>
           <div className='flex pt-3 px-3 col-start-1 col-end-3 justify-end'><strong className='me-3'>Total: </strong>{total.toFixed(2)}</div>
-          <button onClick={openShoppingCart} type='button' className='bg-gray-300 rounded-xl p-2'>Cerrar</button>
-          <button type='button' className='bg-colorMain text-white rounded-xl p-2'>Continuar</button>
+          <button onClick={openShoppingCart} type='button' className='bg-gray-300 rounded-xl p-2'>Close</button>
+          <button type='button' className='bg-colorMain text-white rounded-xl p-2'>Continue</button>
         </footer>
       </section>
     </>

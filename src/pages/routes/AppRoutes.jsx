@@ -1,9 +1,10 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom'
-import { LoginPage } from '../loginPage/LoginPage'
+import { Routes, Route } from 'react-router-dom'
+import { LoginPage } from '../loginPage'
 import { AppRouterInternas } from './AppRouterInternas'
 
 export const AppRoutes = () => {
+
   return (
     <Routes>
       <Route path='/' element={<LoginPage></LoginPage>}></Route>
