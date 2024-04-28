@@ -31,11 +31,11 @@ export const LoginPage = () => {
     <>
       <main className='tablet:grid tablet:grid-cols-5 overflow-x-hidden w-full tablet:h-dvh'>
         
-        <section className='h-screen tablet:col-start-1 tablet:col-end-3 bg-colorMain text-white flex flex-col justify-center px-10'>
+        <section className='h-screen tablet:col-start-1 tablet:col-end-3 bg-colorMain text-white flex flex-col justify-center mobileLg:px-16 px-10'>
           <h1 className='font-bold  text-balance text-3xl tablet:text-4xl mb-6 leading-relaxed bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text'>Enter your account and discover new experiences</h1>
           <p className='font-light'>You do not have an account?</p>
           <div>
-          <button className='bg-gray-600 p-3 rounded-md mt-6 mb-3 cursor-default'>Create account here</button>
+          <button className='bg-purple-900 p-3 rounded-md mt-6 mb-3 cursor-default font-semibold'>Create account here</button>
           </div>
         </section>
         

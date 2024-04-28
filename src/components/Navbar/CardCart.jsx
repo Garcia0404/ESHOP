@@ -5,7 +5,6 @@ import { removeItemCart } from '../../anim'
 export const CardCart = (itemCart) => {
   const { items, setItems, addCart, restCart } = useContext(UsuarioContext)
   const calcular = itemCart.price * itemCart.cantidad
-
   useEffect(() => {
     console.log('Agregado al carrito :)', calcular), [calcular]
   })
@@ -14,16 +13,15 @@ export const CardCart = (itemCart) => {
     setItems(items.filter((item) => item.id !== itemCart.id))
   }
 
-
   return (
     <motion.li 
       variants={removeItemCart}
       initial={removeItemCart.initial}
       animate={removeItemCart.enter}
       exit={removeItemCart.exit}
-      className='bg-gray-100 w-full p-4 grid grid-cols-2 grid-rows-auto gap-4'
+      className={`bg-gray-100 w-full p-4 grid grid-cols-2 grid-rows-auto gap-4`}
       >
-      <div className='grid place-content-center rounded-md bg-white border'>
+      <div className='grid place-content-center rounded-md   overflow-hidden bg-white border'>
         <img className='w-full' src={itemCart.images[0]} height='100' width='100' alt={itemCart.id} />
       </div>
       <section className='flex flex-col justify-around'>

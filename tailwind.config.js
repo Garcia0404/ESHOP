@@ -13,9 +13,11 @@ export default {
       },
       screens: {
         'mobile': '350px',
+        'mobileMd':'450px',
         'mobileLg': '550px',
         'tabletsm': '650px',
         'tablet': '820px',
+        'lg':'1000px',
       },
       gridTemplateColumns:{
         'main':'repeat(auto-fill,minmax(250px,1fr))'

@@ -23,7 +23,6 @@ export const removeItemCart = {
   },
   enter:{
     opacity:1,
-    x:'0',
     transition:{
       duration:0.3,
       ease:[0.76, 0, 0.24, 1]
@@ -32,7 +31,7 @@ export const removeItemCart = {
   exit:{
     opacity:0,
     transition:{
-      duration:1,
+      duration:0.3,
     }
   }
 }
