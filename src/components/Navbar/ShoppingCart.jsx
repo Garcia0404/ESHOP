@@ -1,7 +1,7 @@
 import React,{useContext} from 'react'
 import  {CardCart}  from './CardCart';
 import { UsuarioContext } from '../../context/AppContext';
-import { motion } from 'framer-motion';
+import { motion,AnimatePresence } from 'framer-motion';
 import { slider } from '../../anim'
 export const ShoppingCart = () => {
   const{openShop,openShoppingCart,items}=useContext(UsuarioContext)
@@ -17,13 +17,14 @@ export const ShoppingCart = () => {
         className='overflow-auto absolute top-0 right-0 h-dvh w-full min-[350px]:w-[400px] bg-white text-black z-30 shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] flex-col justify-between'>
         <div className='w-full p-2'>
           <ul className='list-none grid gap-2'>
+            <AnimatePresence>
             {
               items.map((item,index)=>(
-                <article key={index}>
-                  <CardCart {...item}/>
-                </article>
+                  <CardCart key={index} {...item}/>
               ))
             }
+            </AnimatePresence>
+            
           </ul>
         </div>
         <footer className='sticky bottom-0 right-0 bg-white border border-gray-200 grid grid-rows-2 grid-cols-2 gap-2 px-2 pb-2'>
