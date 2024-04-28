@@ -1,6 +1,30 @@
 import { createContext, useState, useEffect } from "react";
 export const UsuarioContext = createContext()
 export const AppContext = ({ children }) => {
+//Obteniendo los datos de la API
+  const [data,setData] = useState([])
+  const [loader,setLoader] = useState(false)
+  
+  const products = async (id='') => {
+    const url = id?`https://api.escuelajs.co/api/v1/products/${id}`:`https://api.escuelajs.co/api/v1/products?offset=0&limit=27`
+    setLoader(true)
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log(data,'data de mi itempage',url)
+      return data
+    } catch (e) {
+      console.error('Ocurrió un error al cargar los datos', e);
+    } finally{
+      setLoader(false)
+    }
+  };  
+  useEffect(
+    () => {
+      products().then(res=>setData(res))
+    }
+    , [])
+  //------------------------------------------
   const [openShop, setOpenShop] = useState(false)
   const [items, setItems] = useState([])
   const { subtotal, setSubtotal } = useState(0)
@@ -45,7 +69,7 @@ export const AppContext = ({ children }) => {
 
 
   return (
-    <UsuarioContext.Provider value={{ openShop, setOpenShop, openShoppingCart, addCart, restCart, items, setItems, subtotal, setSubtotal, username, setUsername, password, setPassword }}>
+    <UsuarioContext.Provider value={{ openShop, setOpenShop, openShoppingCart, addCart, restCart, items, setItems, subtotal, setSubtotal, username, setUsername, password, setPassword,loader, setLoader,data,setData,products }}>
       {children}
     </UsuarioContext.Provider>
   )

@@ -6,20 +6,16 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'grayMain': '#434145',
+        'blueMain': '#4670ff',
+        'colorMain':'#19181A',
+      },
       screens: {
-        'tablet': '768px',
-  
-        'laptop': '1024px',
-        // => @media (min-width: 1024px) { ... }
-  
-        'desktop': '1280px',
-        // => @media (min-width: 1280px) { ... }
-      },
-      colors:{
-        colorMain:'#19181A',
-      },
-      animation:{
-         
+        'mobile': '350px',
+        'mobileLg': '550px',
+        'tabletsm': '650px',
+        'tablet': '900px',
       },
     },
   },

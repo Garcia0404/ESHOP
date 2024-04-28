@@ -7,13 +7,13 @@ export const CardProducts = (product) => {
 
   return (
     <>
-      <div className="relative flex w-64 md:80 h-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border mx-auto">
-        <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative mx-4 mt-4 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
-          <img src={product.image}
-            className="h-full w-full object-cover" />
+      <div className="relative flex w-64 md:80 flex-col rounded-xl h-96 bg-white bg-clip-border text-gray-700 shadow-md border mx-auto">
+        <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative h-52 overflow-hidden rounded-t-xl bg-white bg-clip-border text-gray-700">
+          <img src={product.images[0]}
+            className="w-full object-bottom" />
         </div>
-        <div className="p-6">
-          <div className="mb-2 flex items-center justify-between">
+        <div className="py-6 px-3">
+          <div className="mb-2 flex gap-3 items-center justify-between">
             <p onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
               {product.title}
             </p>
@@ -24,7 +24,7 @@ export const CardProducts = (product) => {
 
         </div>
         <div className="p-6 pt-0 mt-auto">
-          <button value={product.id} onClick={() => addCart(product)} className="block w-full select-none rounded-lg bg-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+          <button value={product.id} onClick={() => addCart(product)} className="block w-full select-none rounded-lg bg-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-110 focus:opacity-[0.85] active:scale-95 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
             Add to Cart
           </button>
         </div>

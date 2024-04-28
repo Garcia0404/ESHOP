@@ -1,23 +1,24 @@
 import React, { useContext, useState } from 'react'
 import { UsuarioContext } from '../../context/AppContext'
 import { ShoppingCart } from './ShoppingCart'
-import  catPng  from '../../assets/cat.png'
+import catPng from '../../assets/cat.png'
 import { useNavigate } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 export const Nav = () => {
-  const { openShoppingCart, items } = useContext(UsuarioContext)
+  const { openShoppingCart, items, openShop } = useContext(UsuarioContext)
   const navigate = useNavigate()
-  const { username,setUsername } = useContext(UsuarioContext)
-  const [ userActive,setUserActive ] = useState(false)
+  const { username, setUsername } = useContext(UsuarioContext)
+  const [userActive, setUserActive] = useState(false)
 
-  function onclickUser(){
+  function onclickUser() {
     setUserActive(!userActive)
   }
-  const styleUserActive = userActive?'block':'hidden'
+  const styleUserActive = userActive ? 'block' : 'hidden'
   return (
     <>
-      <nav className='flex items-center justify-between p-3 sticky top-0 right-0 bg-[rgba(255,255,255,0.3)] backdrop-blur-md z-10'>
-        <div onClick={()=>navigate('/products')} className='text-xl text-colorMain font-bold cursor-pointer'>Virtual Shop</div>
-        <div className='flex gap-2 items-center'>
+      <nav className='flex items-center justify-between p-4 sticky top-0 right-0 bg-[rgba(255,255,255,0.3)] backdrop-blur-md z-10'>
+        <div onClick={() => navigate('/products')} className='text-xl text-colorMain font-bold cursor-pointer'>Virtual Shop</div>
+        <div className='flex gap-4 items-center'>
           <div className='relative'>
             <div className='top-0 text-sm text-white right-0 rounded-full bg-black absolute z-20 w-4 h-4 grid place-content-center'>{items.length}</div>
             <svg onClick={openShoppingCart} className="z-10 w-10 h-10 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -28,19 +29,21 @@ export const Nav = () => {
             <div onClick={onclickUser} className='cursor-pointer'>
               <img className='my-auto border-2 rounded-full border-[#d800ff]' src={catPng} alt="user" height="35px" width='35px' />
             </div>
-            <div className={`bg-gray-100 ${styleUserActive} absolute top:0 right-0 rounded-md mt-2 border p-2 flex flex-col gap-1 shadow-md`}>
+            <div className={`bg-gray-100 ${styleUserActive} w-60 absolute top:0 right-0 rounded-md mt-2 border py-2 px-4 flex flex-col gap-1 shadow-md`}>
               <span className='font-semibold px-2 py-1'>Signed as<br></br><span className='font-medium text-gray-400'>{username}@example.com</span></span>
               <ul className='list-none flex flex-col gap-2'>
                 <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>My Settings</li>
                 <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>Configurations</li>
                 <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>Help and Feedback</li>
-                <li onClick={()=>{navigate('/'),localStorage.setItem('data',''),setUsername('')}} className='hover:bg-red-300 hover:text-red-500 rounded-md px-2 py-1 transition-all cursor-pointer'>Log Out</li>
+                <li onClick={() => { navigate('/'), localStorage.setItem('data', ''), setUsername('') }} className='hover:bg-red-300 hover:text-red-500 rounded-md px-2 py-1 transition-all cursor-pointer'>Log Out</li>
               </ul>
             </div>
           </span>
         </div>
+        <AnimatePresence>
+          {openShop && <ShoppingCart />}
+        </AnimatePresence>
 
-        <ShoppingCart></ShoppingCart>
       </nav>
     </>
   )

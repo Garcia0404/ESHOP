@@ -15,9 +15,9 @@ export const CardCart = (itemCart) => {
 
 
   return (
-    <li className='bg-gray-100 w-full p-2 grid grid-cols-2 grid-rows-auto gap-2'>
+    <li className='bg-gray-100 w-full p-4 grid grid-cols-2 grid-rows-auto gap-4'>
       <div className='grid place-content-center rounded-md bg-white border'>
-        <img className='m-auto' src={itemCart.image} height='100' width='100' alt={itemCart.id} />
+        <img className='w-full' src={itemCart.images[0]} height='100' width='100' alt={itemCart.id} />
       </div>
       <section className='flex flex-col justify-around'>
         <h3 className='text-sm font-light'>{itemCart.title}</h3>
