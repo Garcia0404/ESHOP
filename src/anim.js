@@ -30,10 +30,9 @@ export const removeItemCart = {
     }
   },
   exit:{
-    x:'100%',
+    opacity:0,
     transition:{
-      duration:0.1,
-      ease:[0.76, 0, 0.24, 1]
+      duration:1,
     }
   }
 }

@@ -7,10 +7,10 @@ export const CardProducts = (product) => {
 
   return (
     <>
-      <div className="relative flex w-64 md:80 flex-col rounded-xl h-96 bg-white bg-clip-border text-gray-700 shadow-md border mx-auto">
+      <div className="relative flex md:80 flex-col rounded-xl h-96 bg-white bg-clip-border text-gray-700 shadow-md border mx-auto">
         <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative h-52 overflow-hidden rounded-t-xl bg-white bg-clip-border text-gray-700">
           <img src={product.images[0]}
-            className="w-full object-bottom" />
+            className="h-auto w-full object-cover" />
         </div>
         <div className="py-6 px-3">
           <div className="mb-2 flex gap-3 items-center justify-between">

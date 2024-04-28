@@ -4,7 +4,7 @@ import { UsuarioContext } from '../../context/AppContext';
 import { motion,AnimatePresence } from 'framer-motion';
 import { slider } from '../../anim'
 export const ShoppingCart = () => {
-  const{openShop,openShoppingCart,items}=useContext(UsuarioContext)
+  const{openShoppingCart,items}=useContext(UsuarioContext)
   const total = items.reduce((accumulator,valor) => accumulator+valor.price*valor.cantidad , 0)
   
   return (
@@ -14,16 +14,16 @@ export const ShoppingCart = () => {
         initial={slider.initial}
         exit={slider.exit}
         animate={slider.enter}
-        className='overflow-auto absolute top-0 right-0 h-dvh w-full min-[350px]:w-[400px] bg-white text-black z-30 shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] flex-col justify-between'>
+        className='flex overflow-y-scroll fixed top-0 right-0 h-dvh w-full mobile:max-w-[400px] bg-white text-black z-30 shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] flex-col justify-between'>
         <div className='w-full p-2'>
           <ul className='list-none grid gap-2'>
-            <AnimatePresence>
+           <AnimatePresence>
             {
               items.map((item,index)=>(
                   <CardCart key={index} {...item}/>
               ))
             }
-            </AnimatePresence>
+           </AnimatePresence>
             
           </ul>
         </div>

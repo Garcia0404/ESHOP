@@ -15,8 +15,11 @@ export default {
         'mobile': '350px',
         'mobileLg': '550px',
         'tabletsm': '650px',
-        'tablet': '900px',
+        'tablet': '820px',
       },
+      gridTemplateColumns:{
+        'main':'repeat(auto-fill,minmax(250px,1fr))'
+      }
     },
   },
   plugins: [],

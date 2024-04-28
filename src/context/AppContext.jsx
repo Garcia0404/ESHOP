@@ -6,7 +6,7 @@ export const AppContext = ({ children }) => {
   const [loader,setLoader] = useState(false)
   
   const products = async (id='') => {
-    const url = id?`https://api.escuelajs.co/api/v1/products/${id}`:`https://api.escuelajs.co/api/v1/products?offset=0&limit=27`
+    const url = id?`https://api.escuelajs.co/api/v1/products/${id}`:`https://api.escuelajs.co/api/v1/products?offset=0&limit=21`
     setLoader(true)
     try {
       const res = await fetch(url);
@@ -33,7 +33,6 @@ export const AppContext = ({ children }) => {
 
   function openShoppingCart() {
     setOpenShop(!openShop)
-    document.body.style.overflowY = openShop ? 'auto' : 'hidden';
   }
 
   function addCart(product) {
