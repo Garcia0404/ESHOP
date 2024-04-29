@@ -1,16 +1,22 @@
 import React, { useContext } from 'react'
 import { UsuarioContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
+export const handleError = (e) =>{
+  const img = '/imgError.svg'
+  console.log(e.target.src=img)
+}
 export const CardProducts = (product) => {
   const { addCart } = useContext(UsuarioContext)
   const navigate = useNavigate()
-
   return (
     <>
       <div className="relative flex md:80 flex-col rounded-xl h-96 bg-white bg-clip-border text-gray-700 shadow-md border mx-auto">
-        <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative h-52 overflow-hidden rounded-t-xl bg-white bg-clip-border text-gray-700">
+        <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative h-52 overflow-hidden rounded-t-xl bg-clip-border text-gray-700 bg-gray-200">
           <img src={product.images[0]}
-            className="h-auto w-full object-cover" />
+            className="h-auto w-full object-cover"
+            alt={product.title}
+            onError={handleError} 
+          />
         </div>
         <div className="py-6 px-3">
           <div className="mb-2 flex gap-3 items-center justify-between">

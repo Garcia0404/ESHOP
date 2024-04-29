@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UsuarioContext } from '../../context/AppContext'
-import { Loader } from '../../components'
+import { Loader,handleError } from '../../components'
 
 export const ItemPage = () => {
   const { addCart, products, loader } = useContext(UsuarioContext)
@@ -25,8 +25,8 @@ export const ItemPage = () => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
             </svg>
           </div>
-          <section className='grid place-content-center overflow-hidden w-[400px] h-[400px] mx-auto'>
-            <img className='rounded-md' src={data.images} alt={data.images} width='400px' height='400px' />
+          <section className='grid place-content-center rounded-md overflow-hidden w-[400px] h-[400px] mx-auto bg-gray-200'>
+            <img className='rounded-md object-cover' src={data.images} alt={data.images} width='400px' height='400px' onError={handleError} />
           </section>
           <main className='flex flex-col gap-4 bg-gray-100 rounded-3xl p-8'>
             <h1 className='text-balance font-bold text-2xl'>{data.title}</h1>
