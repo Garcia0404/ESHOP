@@ -23,7 +23,7 @@ export const CardCart = (itemCart) => {
       className={`bg-gray-100 w-full p-4 grid grid-cols-2 grid-rows-auto gap-4`}
       >
       <div className='grid place-content-center rounded-md w-32 h-32 overflow-hidden bg-white border mx-auto'>
-        <img onError={handleError} className='w-full' src={itemCart.images[0]} height='100' width='100' alt={itemCart.id} />
+        <img onError={handleError} loading='lazy' className='w-full' src={itemCart.images[0]} height='100' width='100' alt={itemCart.id} />
       </div>
       <section className='flex flex-col justify-around'>
         <h3 className='text-sm font-light'>{itemCart.title}</h3>

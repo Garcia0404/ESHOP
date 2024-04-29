@@ -13,6 +13,7 @@ export const CardProducts = (product) => {
       <div className="relative flex md:80 flex-col rounded-xl h-96 bg-white bg-clip-border text-gray-700 shadow-md border mx-auto">
         <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative h-52 overflow-hidden rounded-t-xl bg-clip-border text-gray-700 bg-gray-200">
           <img src={product.images[0]}
+            loading='lazy'
             className="h-auto w-full object-cover"
             alt={product.title}
             onError={handleError} 

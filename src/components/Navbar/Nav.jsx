@@ -3,17 +3,47 @@ import { UsuarioContext } from '../../context/AppContext'
 import { ShoppingCart } from './ShoppingCart'
 import catPng from '../../assets/cat.png'
 import { useNavigate } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+
+const variants = {
+  initial:{
+    scale:0
+  },
+  enter:{
+    scale:1
+  },
+  exit:{
+    scale:0,
+  }
+}
+export const LogOut = () => {
+  const { username, setUsername } = useContext(UsuarioContext)
+  const navigate = useNavigate()
+  return (
+    <motion.div
+      variants={variants}
+      initial='initial'
+      animate='enter'
+      exit='exit'
+      className='origin-top-right bg-gray-100 w-60 absolute top:0 right-0 rounded-md mt-2 border py-2 px-4 flex flex-col gap-1 shadow-md'>
+      <span className='font-semibold px-2 py-1'>Signed as<br></br><span className='font-medium text-gray-400'>{username}@example.com</span></span>
+      <ul className='list-none flex flex-col gap-2'>
+        <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>My Settings</li>
+        <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>Configurations</li>
+        <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>Help and Feedback</li>
+        <li onClick={() => { navigate('/'), localStorage.setItem('data', ''), setUsername('') }} className='hover:bg-red-300 hover:text-red-500 rounded-md px-2 py-1 transition-all cursor-pointer'>Log Out</li>
+      </ul>
+    </motion.div>
+  )
+
+}
 export const Nav = () => {
   const { openShoppingCart, items, openShop } = useContext(UsuarioContext)
-  const navigate = useNavigate()
-  const { username, setUsername } = useContext(UsuarioContext)
   const [userActive, setUserActive] = useState(false)
-
   function onclickUser() {
     setUserActive(!userActive)
   }
-  const styleUserActive = userActive ? 'block' : 'hidden'
+
   return (
     <>
       <nav className='flex items-center justify-between p-4 sticky top-0 right-0 bg-[rgba(255,255,255,0.3)] backdrop-blur-md z-10'>
@@ -29,15 +59,9 @@ export const Nav = () => {
             <div onClick={onclickUser} className='cursor-pointer'>
               <img className='my-auto border-2 rounded-full border-[#d800ff]' src={catPng} alt="user" height="35px" width='35px' />
             </div>
-            <div className={`bg-gray-100 ${styleUserActive} w-60 absolute top:0 right-0 rounded-md mt-2 border py-2 px-4 flex flex-col gap-1 shadow-md`}>
-              <span className='font-semibold px-2 py-1'>Signed as<br></br><span className='font-medium text-gray-400'>{username}@example.com</span></span>
-              <ul className='list-none flex flex-col gap-2'>
-                <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>My Settings</li>
-                <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>Configurations</li>
-                <li className='hover:bg-gray-300 rounded-md px-2 py-1 transition-all cursor-pointer'>Help and Feedback</li>
-                <li onClick={() => { navigate('/'), localStorage.setItem('data', ''), setUsername('') }} className='hover:bg-red-300 hover:text-red-500 rounded-md px-2 py-1 transition-all cursor-pointer'>Log Out</li>
-              </ul>
-            </div>
+            <AnimatePresence>
+            {userActive && <LogOut />}
+            </AnimatePresence>
           </span>
         </div>
         <AnimatePresence>
