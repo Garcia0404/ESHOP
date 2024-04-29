@@ -3,7 +3,7 @@ import { UsuarioContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 export const handleError = (e) =>{
   const img = '/imgError.svg'
-  console.log(e.target.src=img)
+  e.target.src=img
 }
 export const CardProducts = (product) => {
   const { addCart } = useContext(UsuarioContext)
