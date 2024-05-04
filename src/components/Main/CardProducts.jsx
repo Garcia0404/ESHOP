@@ -14,7 +14,7 @@ export const CardProducts = (product) => {
         <div onClick={()=>navigate(`/products/${product.id}`)} className="cursor-pointer relative h-52 overflow-hidden rounded-t-xl bg-clip-border text-gray-700 bg-gray-200">
           <img src={product.images[0]}
             loading='lazy'
-            className="h-auto w-full object-cover"
+            className="h-auto w-full"
             alt={product.title}
             onError={handleError} 
           />

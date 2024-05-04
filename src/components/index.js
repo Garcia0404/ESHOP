@@ -1,4 +1,6 @@
 export * from './Main/Products'
 export * from './Navbar/Nav'
+export * from './Navbar/ShoppingCart'
 export * from './loading/Loader'
 export * from './Main/CardProducts'
+export * from './Main/Aside'

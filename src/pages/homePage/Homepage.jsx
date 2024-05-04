@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
-import { Products } from '../../components'
-import { UsuarioContext } from '../../context/AppContext'
-import { Loader } from '../../components'
+import React from 'react'
+import { Aside, Products } from '../../components'
 
 export const Homepage = () => {
-  const { loader } = useContext(UsuarioContext)
   return (
-    <>
-    {
-      loader ? <Loader/>:<Products/>
-    }
-    </>
+    <main className='max-w-7xl mx-auto'>
+      <div className='px-6 py-2'>
+        <Aside />
+      </div>
+      <Products />
+    </main>
   )
 }

@@ -2,23 +2,19 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UsuarioContext } from '../../context/AppContext'
 import { Loader,handleError } from '../../components'
+import useSWR from 'swr'
+import { getProducts } from '../../helpers/api'
 
 export const ItemPage = () => {
-  const { addCart, products, loader } = useContext(UsuarioContext)
+  const { addCart } = useContext(UsuarioContext)
   const params = useParams()
   const id = params.id
-  const [data, setData] = useState({})
   const navigate = useNavigate()
-
-  useEffect(() => {
-    products(id).then(res => setData(res))
-  }, [])
-
-  //addCart desde la ruta dinámica-------------
+  const { data,error } = useSWR(`/${id}`,getProducts)
+  if(error) return <div>Ocurrió un error al cargar los datos</div>
+  if(!data) return <Loader/>
   return (
     <>
-      {
-        loader?<Loader/>:
         <article className='relative grid gap-8 lg:grid-cols-2 mobileMd:p-5 mobileMd:border m-5'>
           <div onClick={() => navigate('/products')} className='absolute m-1 p-2 border-2 border-black cursor-pointer rounded-full hover:bg-colorMain hover:text-white transition-all'>
             <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -36,7 +32,6 @@ export const ItemPage = () => {
             <button onClick={() => { addCart(data) }} className='bg-colorMain text-white rounded-md p-2 hover:bg-[#9E9D9B] hover:text-black active:scale-95 transition-all'>Add to cart</button>
           </main>
         </article>
-      }
     </>
   )
 }

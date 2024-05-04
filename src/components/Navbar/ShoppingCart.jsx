@@ -18,12 +18,14 @@ export const ShoppingCart = () => {
         className='flex overflow-y-scroll fixed top-0 right-0 h-dvh w-full mobile:max-w-[400px] bg-white text-black z-30 shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] flex-col justify-between'>
         <div className='w-full py-2'>
           <ul className='list-none grid gap-2'>
-            {
+            <AnimatePresence>
+            {(items.length!==0)?
               items.map((item,index)=>(
                   <CardCart key={index} {...item}/>
-              ))
+              )):
+              <li className='p-8'>Your cart is empty.</li>
             }
-            
+            </AnimatePresence>
           </ul>
         </div>
         <footer className='sticky bottom-0 right-0 bg-white border border-gray-200 grid grid-rows-2 grid-cols-2 gap-2 px-2 pb-2'>

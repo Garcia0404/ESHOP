@@ -17,9 +17,9 @@ export const CardCart = (itemCart) => {
   return (
     <motion.li 
       variants={removeItemCart}
-      initial={removeItemCart.initial}
-      animate={removeItemCart.enter}
-      exit={removeItemCart.exit}
+      initial='initial'
+      animate='enter'
+      exit='exit'
       className={`bg-gray-100 w-full p-4 grid grid-cols-2 grid-rows-auto gap-4`}
       >
       <div className='grid place-content-center rounded-md w-32 h-32 overflow-hidden bg-white border mx-auto'>
